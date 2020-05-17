@@ -1,0 +1,3 @@
+[submodule "doc"]
+	path = doc
+	url = c:\\primus\\codes\\latex_workshop\\templates\\mypaper
