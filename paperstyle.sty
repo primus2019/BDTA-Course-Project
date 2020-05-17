@@ -1,0 +1,61 @@
+\ProvidesPackage{paperstyle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color, soul}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{lastpage}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usemintedstyle{pastie}
+\usepackage[title]{appendix}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{svg}
+\usepackage{lipsum}
+\usepackage[
+backend=biber,
+% style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\renewcommand{\appendix}[1]{
+	\newpage
+	\begin{appendices}
+		\section{#1}
+\end{appendices}}
+
+\newcommand{\authorName}{Lincheng Ji}
+\newcommand{\titleName}{Default Title}
+
+\lhead{\authorName}
+\chead{\titleName}
+\rhead{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+\author{\authorName}
+\title{\titleName}
+\date{\today}
+
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+
+\theoremstyle{definition}
+\newtheorem{axiom}{AXIOM}[section]
+\newtheorem{proposition}{PROPOSITION}[section]
+\newtheorem{definition}{DEFINITION}[section]
+\newtheorem{theorem}{THEOREM}[section]
+\newtheorem{notation}{NOTATION}[section]
+
+% \pagecolor[RGB]{250, 249, 222}
+% \pagecolor[RGB]{234, 234, 239}
+% \pagecolor[RGB]{199,237,204}
+
+\everymath{\displaystyle}
+
+\addbibresource{../bib/default.bib}
