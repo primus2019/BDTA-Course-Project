@@ -1,0 +1,36 @@
+\documentclass[letterpaper]{article}
+\usepackage{paperstyle}
+
+
+\begin{document}
+	\maketitle
+
+	\pagestyle{fancy}
+
+	\thispagestyle{empty}
+
+	\begin{abstract}
+		\lipsum[1]
+	\end{abstract}
+	
+	\section{Introduction}
+	
+	\lipsum[1]
+
+	\medskip
+
+	%% If you want to use the bibliography feature, 
+	%% 1. run latex on tex;
+	%% 2. run 'biber outputs/[bcfname]' on prompt command line;
+	%% 3. run latex on tex.
+
+	Some paper \cite{einstein, dirac}
+
+	\printbibliography
+
+	\appendix{Optional Appendix}
+
+	\lipsum[1]
+
+	\inputminted{octave}{codes/default.py}
+\end{document}
