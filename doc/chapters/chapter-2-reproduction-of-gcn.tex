@@ -1,0 +1,63 @@
+% \chapter{Reproduction of GCN}
+
+\section{Graph Convolution Layer and GCN model}
+
+A neutral network based on graph convolution consists of layers of graph convolution and non-linear activation function. To reproduct the work of Kipf et al.\cite{DBLP:journals/corr/KipfW16}, a neutral network is modeled by the forward function in Equation \ref{forward-function-in-gcn}.
+
+\begin{equation}
+    Z = f(X, A) = \text{softmax} \left(\hat{A}\cdot \text{ReLU}\left(\hat{A}XW^{(0)}\right)W(1)\right)
+    \label{forward-function-in-gcn}
+\end{equation}
+
+\section{Model Implement and Experiment}
+
+The reproduced model is based on PyTorch package, which contains built-in neutral network model frameworks. The codes are attached in Appendix. 
+
+To regain the training result in the work of Kipf et al\cite{DBLP:journals/corr/KipfW16}, the model implements the same hyperparameters, as shown in Table \ref{hyperparam-gcn}.
+
+\medskip
+
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{cccccc}
+        \hline
+        random seed & hidden units & dropout rate & learning rate & weight decay for L2 loss & epochs \\
+        24 & 16 & 0.5 & 0.01 & 5e-4 & 200 \\
+        \hline
+    \end{tabular}
+    \caption{Hyperparameters in GCN Reproduction}
+    \label{hyperparam-gcn}
+\end{table}
+
+\section{Comparison and Result}
+
+The training is carried out on \textbf{Cora} dataset\cite{Sen_Namata_Bilgic_Getoor_Galligher_Eliassi-Rad_2008} in both reproducable random split measures. The result performance is calculated on the basis on 20 trainings, which 
+
+The original paper performance and comparison is shown in Table \ref{result-comparison}.
+
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{lll}
+        \hline
+        model & Cora & Citeseer \\
+        \hline
+        ManiReg\cite{ManiReg} & 59.5 & 60.1 \\
+        SemiEmb\cite{SemiEmb} & 59.0 & 59.6 \\
+        LP\cite{LP} & 68.0 & 45.3 \\
+        DeepWalk\cite{DeepWalk} & 67.2 & 43.2 \\
+        ICA\cite{ICA} & 75.1 & 69.1 \\
+        Planetoid*\cite{DBLP:journals/corr/YangCS16} & 75.7 & 64.7 \\
+        GCN (paper) & 81.5 & 70.3 \\
+        GCN (paper, rand splits) & 80.1$\pm$0.5 & 67.9$\pm$0.5 \\
+        \hline
+        GCN (reproduced) & 82.5 & 73.1 \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of GCN and Other Model Performance}
+    \label{result-comparison}
+\end{table}
+
+
+The results of reproduction generally matches the original performance. The reproduction appears to have slightly higher accuracy rate, which can be caused by sample shuffling and difference in train-valid-test ratio. The reproduction is in all satisfactory.

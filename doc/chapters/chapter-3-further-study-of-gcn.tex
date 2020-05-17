@@ -1,0 +1,47 @@
+% \chapter{Further Study of GCN}
+
+\section{Discussion of GCN}
+
+Kipf et al.\cite{DBLP:journals/corr/KipfW16} modeled and trained the GCN on the whole graph set; whereas, the model reveals two shortcomings. The whole graph is stored in CPU/GPU in every epochs, which is computationally expensive and makes it hard to train on large-scale graph network. Meanwhile, mini-batch gradient descent cannot apply to the model, which should increase the stochasticity of the model. 
+
+\section{Possible Improvements}
+
+Improvements on mini-batch, which is in considerable complexity and beyond the mathematical ability of the author, are revealed by reviews on other researches.
+
+\subsection{GCNSAGE}
+
+\textit{Inductive Representation Learning on Large Graph} by Hamilton et al.\cite{DBLP:journals/corr/HamiltonYL17} presents GCNSAGE model, which utilizes low-dimensional node embeddings and feature sampling and aggregating. 
+
+The implementation of each training iteration in GCNSAGE is in Table \ref{implementation-gcnsage}.
+
+\begin{table}[H]
+    \centering
+    \noindent\rule{.7\textwidth}{1pt}
+
+    \medskip
+
+    \begin{varwidth}{.7\textwidth}
+        \begin{itemize}
+            \item Randomly select a minibatch $\upsilon_B\in \upsilon_L$ of nodes;
+            \item Build a computation graph that only contains the activation $h_{\upsilon}^P(l)$ and $\bar{h}_{\upsilon}^{(l)}$ needed for the current minibatch;
+            \item Get the predictions by forward propagation as $Z^{(l+1)} = \left(\hat{P}^{(l)}(H^{(l)} - \bar{H}^{(l)}) + P\bar{H}^{(l)}\right)W^{(l)}$;
+            \item Get the gradients by backward propagation, and update the parameters by SGD;
+            \item Update the historical activations;
+        \end{itemize}
+    \end{varwidth}
+    
+    \medskip
+    
+    \noindent\rule{.7\textwidth}{1pt}
+
+    \caption{GCNSAGE Implementation}
+    \label{implementation-gcnsage}
+\end{table}
+
+\subsection{FastGCN}
+
+\textit{FastGCN: Fast Learning with Graph Convolutional Networks via Importance Sampling} by Chen et al.\cite{DBLP:journals/corr/abs-1801-10247}
+
+\subsection{N-GCN}
+
+\cite{DBLP:journals/corr/abs-1802-08888}

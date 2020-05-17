@@ -1,0 +1,40 @@
+\documentclass[letterpaper]{article}
+\usepackage{reportstyle}
+
+
+\begin{document}
+    \pagestyle{fancy}
+
+    \thispagestyle{empty}
+
+	\maketitle
+
+	\begin{abstract}
+		This is the reprouduction of the splendid model from 
+		work of Thomas M. Kipf and Max Welling 
+		\textit{Semi-Supervised Classification with Graph Convolutional Networks}
+		\cite{DBLP:journals/corr/KipfW16}. The reproduction 
+		is based on PyTorch machine learning package. The dataset \textbf{Cora} 
+		applied in the experiment is from \textit{Collective Classification in Network Data}
+		\cite{Sen_Namata_Bilgic_Getoor_Galligher_Eliassi-Rad_2008}. 
+    \end{abstract}
+    
+	\input{chapters/chapter-1-review-on-gcn.tex}
+	
+	\input{chapters/chapter-2-reproduction-of-gcn.tex}
+
+	\input{chapters/chapter-3-further-study-of-gcn.tex}
+	
+	\medskip
+
+	%% If you want to use the bibliography feature, 
+	%% 1. run latex on tex;
+	%% 2. run 'biber outputs/[bcfname]' on prompt command line;
+	%% 3. run latex on tex.
+
+	\printbibliography
+
+	\appendix{GCN Model Code}
+
+	\inputminted{octave}{../model.py}
+\end{document}
